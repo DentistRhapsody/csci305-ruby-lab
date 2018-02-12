@@ -4,7 +4,7 @@
 ## Concepts of Programming Languages
 ## CSCI 305, Spring 2018
 
-# Due Date: February 9, 2018 at Midnight
+# Due Date: February 12, 2018 at Midnight
 
 # Ruby
 
@@ -17,7 +17,7 @@ You can install ruby using instructions found at the following sites:
 
 Concepts we will explore as a part of this Lab:
 * Regular Expression -> See this [tutorial](https://regexone.com/) and this [too](http://regexpal.com/)
-* Ruby -> See this [tutorial](https://CSCI305.github.io/tutorials/ruby_tutorial.pdf)
+* Ruby -> See this [tutorial](https://www.tutorialspoint.com/ruby/)
 * Procedural Languages
 
 # *Step -1:* Fork and Clone this Repository
@@ -26,6 +26,10 @@ Concepts we will explore as a part of this Lab:
 3. Once you have the repository cloned, you can continue on.
 
 # *Step 0:* Getting everything ready
+You will need to install RSpec in order to run the tests for self checks as well as to answer several questions.
+This can be done in one of the following ways:
+
+The first method is to install bundler and use this to install rspec:
 1. Install Bundler
   ```
   gem install bundler
@@ -33,6 +37,12 @@ Concepts we will explore as a part of this Lab:
 2. Install project dependencies (from the project root directory)
   ```
   bundler install --binstubs
+  ```
+
+The second method is to just install RSpec straight up:
+1. Open a terminal/command line and execute the following command:
+  ```
+  gem install rspec
   ```
 
 # Dataset
@@ -66,6 +76,8 @@ This initial template gives code to loop through each line of the file and print
 # Pre-processing
 
 ## *Step 1:* Extract song title
+For steps 1-3 you will want to construct a method called: `cleanup_title` which takes a single string and returns a cleaned up string suitable for further processing. The method name is required for the self-check specification testing.
+
 Each line contains a track id, song id, artist name, and the song title, such as:
 ```
  TRWRJSX12903CD8446<SEP>SOBSFBU12AB018DBE1<SEP>Frank Sinatra<SEP>Everything Happens To Me
@@ -142,7 +154,11 @@ rspec spec\self_check_1_spec.rb
 
 A bigram is a sequence of two adjacent words in a text. The frequency distribution of bigrams in text(s) is commonly used in statistical natural language processing (see http://en.wikipedia.org/wiki/Bigram). Across this corpus of one million song titles, you will count all the bigram words.
 
-First, you need to split the title string into individual words. Next, you should use one or more data structures to keep track of these word pair counts. That is, for every word, you must keep track of the count for each word that follows it. I strongly recommend you design your data structure for fast retrieval. Put some thought into which data structure to choose. Once you have decided, you can compare your choice to mine.
+First, you need to split the title string into individual words. Next, you should use one or more data structures to keep track of these word pair counts. That is, for every word, you must keep track of the count for each word that follows it. I strongly recommend you design your data structure for fast retrieval. You will need to use the provided variable `$bigrams` provided in the code for the underlying self-check specification tests to work, but it is not required for the tests related to the lab questions.
+
+# Building a Song Title
+
+Now you are going to build a probabilistic song title. First begin by creating a function "most common word" `mcw()`. This function will take in one argument, some word, and returns the word that most often followed that word in the dataset. If you find a tie, randomly select one value. For example, the line `puts mcw("computer")` should give you your answer to Question 4. Before you continue, verify with the following self-check:
 
 # Self-Check
 
@@ -165,14 +181,12 @@ rspec spec\self_check_2_spec.rb
 * The most common word to follow **"happy"** is **"now"**
 * The most common word to follow **"sad"** is **"love"**
 * The most common word to follow **"love"** is **"song"**
-* There are 80 distinct words that follow the word **"love"**.
+* There are 80 distinct words that follow the word **"love"**. (if you only get 79, and the test fails, don't worry too much about it.)
 * The word **"song"** follows **"love"** 33 times.
 
-# Building a Song Title
+# Continuing with Building a Song Title
 
-Now you are going to build a probabilistic song title. First begin by creating a function "most common word" `mcw()`. This function will take in one argument, some word, and returns the word that most often followed that word in the dataset. If you find a tie, randomly select one value. For example, the line `puts mcw("computer")` should give you your answer to Question 4.
-
-Now you are going to use this function to string together a song title. Beginning with a given starting word, write an iterative structure that strings together words that most commonly follow each other in the dataset. Continue until a word does not have a successive word in the dataset, or the count of words in your title reaches 20.
+You will need to create a method `create_title` which produces the most probable title. The `create_title` function takes in a single parameter, the starting word for the title. You then need to use the `mcw` method to string together a song title. Beginning with a given starting word, write an iterative structure that strings together words that most commonly follow each other in the dataset. Continue until a word does not have a successive word in the dataset, or the count of words in your title reaches 20.
 
 # Lab Questions
 
@@ -182,7 +196,7 @@ To answer these questions execute the following command (in the terminal) from t
 
 On Mac or Linux
 ```
-rspec spec/lab_quest_1_5_spec.rb -0 lab_quest_1_5_output.txt
+rspec spec/lab_quest_1_5_spec.rb -o lab_quest_1_5_output.txt
 ```
 
 On Windows:
@@ -221,8 +235,8 @@ On Windows:
 rspec spec\self_check_3_spec.rb
 ```
 
-* Using the seed word **"happy"**, you should get the title: `happy now the world of the world of the world of the world of the world of the world of the`
-* Using the seed word **"sad"**, you should get the title: `sad love song for you ready for you ready for you ready for you ready for you ready for you ready`
+* Using the seed word **"happy"**, you should get the title: `happy now the world of the world of the world of the world of the world of the world of`
+* Using the seed word **"sad"**, you should get the title: `sad love song for you ready for you ready for you ready for you ready for you ready for you`
 * Using the seed word **"computer"**, you should get the title: `computer`
   because no song titles in `a_tracks` contain the word **"computer"**
 
@@ -232,7 +246,7 @@ To answer these questions execute the following command (in the terminal) from t
 
 On Mac or Linux
 ```
-rspec spec/lab_quest_6_9_spec.rb -0 lab_quest_6_9_output.txt
+rspec spec/lab_quest_6_9_spec.rb -o lab_quest_6_9_output.txt
 ```
 
 On Windows:
@@ -260,7 +274,7 @@ To answer these questions execute the following command (in the terminal) from t
 
 On Mac or Linux
 ```
-rspec spec/lab_quest_11_13_spec.rb -0 lab_quest_11_13_output.txt
+rspec spec/lab_quest_11_13_spec.rb -o lab_quest_11_13_output.txt
 ```
 
 On Windows:
@@ -279,17 +293,7 @@ rspec spec\lab_quest_11_13_spec.rb -o lab_quest_11_13_output.txt
 Implement a "fix" for the problematic phenomenon you observed in Question 6. If you have successfully solved these problems, you can remove the restriction of 20 words maximum in the song title. (*Hint: If it goes boom, then you have not solved the problem*)
 
 # Lab Questions
-To answer these questions execute the following command (in the terminal) from the root directory of your project, for questions 17 and 18. Questions 16, 19, and 20 should be answered in the questions.txt file.:
-
-On Mac or Linux
-```
-rspec spec/lab_quest_1_5_spec.rb -0 lab_quest_1_5_output.txt
-```
-
-On Windows:
-```
-rspec spec\lab_quest_1_5_spec.rb -o lab_quest_1_5_output.txt
-```
+Answere the following questions Questions 16 through 20 in the questions.txt file.:
 
 16. Describe in one or two paragraphs your extension and how it fixed the repeating phrase/word problem.
 17. Using the starting word **"montana"**, what song title do you get?
