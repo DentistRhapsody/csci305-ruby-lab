@@ -21,7 +21,7 @@ RSpec.describe "Title Cleaning Self Check" do
         end
         file.close
       else
-        IO.foreach(file_name) do |line|
+        IO.foreach(file_name, encoding: "utf-8") do |line|
           song = cleanup_title(line)
 
           if not song.nil?

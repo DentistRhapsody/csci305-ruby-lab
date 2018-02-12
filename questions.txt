@@ -1,24 +1,24 @@
-Your name
+Christopher McCabe
 CSCI-305
 
-10.
+10. Some unimportant words are very common, such as "the" and "in". Other phrases get caught in a loop, such as "of the world" and "ready for you".
 
-14.
+14. As some words are more common than others, many song titles tend to devolve into a pattern based on those particular titles.
 
-15.
+15. All of the words given in the lab terminate in under 20 words.
 
-16.
+16. The song title is stored as an array of words, and when a new word is added to the title, it performs a check to see if the next expected word is already in the title array, and if it is, it discards the word and returns the title as-is. This guarantees there will be no loops, but doesn't do much to ensure readability or maintain a reasonably small word count.
 
-19.
+19. While using randomness to select among ties is plausible, I didn't implement randomness, simply settling for a simpler iteration giving priority to the words first added (see 'mcw', where I use a '>'. Priority to the last added word would require a '>=' symbol instead.)
 
-20.
+20. "more than you are", I suppose. I'm not looking too hard though.
 
-21.
+21. Ruby's flexibility when it comes to writing method calls is nice. Also, most boolean built-in methods using a '?' character makes for excellent readability beyond just method names.
 
-22.
+22. While I would get used to it in time, I kept forgetting about 'end' statements to close things off. My decision to use Notepad++ instead of a more powerful Ruby IDE caused me a bit of strife too, but that's my own fault. All around it seems like an acceptable language.
 
-23.
+23. "(if you only get 79, and the test fails, don't worry too much about it.)" That's pretty frustrating, but oh well.
 
-24.
+24. 5 hours total.
 
-25.
+25. Anything involving loads of regular expressions, I'll likely turn to Ruby. Its String functions are so incredibly useful for regex.

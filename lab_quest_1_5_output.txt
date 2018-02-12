@@ -1,0 +1,20 @@
+[32m.[0m[32m.[0m[31mF[0m[32m.[0m[32m.[0m
+
+Failures:
+
+  1) Lab Questions Check unique_tracks 3. Unique words following 'computer'
+     [31mFailure/Error: expect($bigrams['computer'].count).to eq(58)[0m
+     [31m[0m
+     [31m  expected: 58[0m
+     [31m       got: 57[0m
+     [31m[0m
+     [31m  (compared using ==)[0m
+     [36m# ./spec/lab_quest_1_5_spec.rb:16:in `block (3 levels) in <top (required)>'[0m
+
+Finished in 0.04803 seconds (files took 37.56 seconds to load)
+[31m5 examples, 1 failure[0m
+
+Failed examples:
+
+[31mrspec ./spec/lab_quest_1_5_spec.rb:15[0m [36m# Lab Questions Check unique_tracks 3. Unique words following 'computer'[0m
+

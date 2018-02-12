@@ -1,0 +1,20 @@
+[31mF[0m[32m.[0m[32m.[0m
+
+Failures:
+
+  1) Lab Questions Check unique_tracks with stop words removed 11. Song title starting with 'amore'
+     [31mFailure/Error: expect(create_title('amore').rstrip()).to eq('amore mio babbino caro gianni schicchi')[0m
+     [31m[0m
+     [31m  expected: "amore mio babbino caro gianni schicchi"[0m
+     [31m       got: "amore mio babbino caro nome na na na na na na na na na na na na na na na"[0m
+     [31m[0m
+     [31m  (compared using ==)[0m
+     [36m# ./spec/lab_quest_11_13_spec.rb:8:in `block (3 levels) in <top (required)>'[0m
+
+Finished in 0.05003 seconds (files took 34.34 seconds to load)
+[31m3 examples, 1 failure[0m
+
+Failed examples:
+
+[31mrspec ./spec/lab_quest_11_13_spec.rb:7[0m [36m# Lab Questions Check unique_tracks with stop words removed 11. Song title starting with 'amore'[0m
+
