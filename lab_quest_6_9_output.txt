@@ -1,0 +1,50 @@
+[31mF[0m[31mF[0m[31mF[0m[31mF[0m
+
+Failures:
+
+  1) Lab Questions Check unique_tracks without stop words removed 6. Song title starting with 'happy'
+     [31mFailure/Error: expect(create_title('happy').chomp).to eq('happy birthday song for the world is a little girl in the world is a little girl in the world')[0m
+     [31m[0m
+     [31m  expected: "happy birthday song for the world is a little girl in the world is a little girl in the world"[0m
+     [31m       got: "happy birthday song is my heart"[0m
+     [31m[0m
+     [31m  (compared using ==)[0m
+     [36m# ./spec/lab_quest_6_9_spec.rb:8:in `block (3 levels) in <top (required)>'[0m
+
+  2) Lab Questions Check unique_tracks without stop words removed 7. Song title starting with 'sad'
+     [31mFailure/Error: expect(create_title('sad').chomp).to eq('sad song for the world is a little girl in the world is a little girl in the world is')[0m
+     [31m[0m
+     [31m  expected: "sad song for the world is a little girl in the world is a little girl in the world is"[0m
+     [31m       got: "sad song is my heart"[0m
+     [31m[0m
+     [31m  (compared using ==)[0m
+     [36m# ./spec/lab_quest_6_9_spec.rb:12:in `block (3 levels) in <top (required)>'[0m
+
+  3) Lab Questions Check unique_tracks without stop words removed 8. Song title starting with 'hey'
+     [31mFailure/Error: expect(create_title('hey').chomp).to eq('hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey')[0m
+     [31m[0m
+     [31m  expected: "hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey"[0m
+     [31m       got: "hey"[0m
+     [31m[0m
+     [31m  (compared using ==)[0m
+     [36m# ./spec/lab_quest_6_9_spec.rb:16:in `block (3 levels) in <top (required)>'[0m
+
+  4) Lab Questions Check unique_tracks without stop words removed 9. Song title starting with 'little'
+     [31mFailure/Error: expect(create_title('little').chomp).to eq('little girl in the world is a little girl in the world is a little girl in the world is')[0m
+     [31m[0m
+     [31m  expected: "little girl in the world is a little girl in the world is a little girl in the world is"[0m
+     [31m       got: "little girl like you are"[0m
+     [31m[0m
+     [31m  (compared using ==)[0m
+     [36m# ./spec/lab_quest_6_9_spec.rb:20:in `block (3 levels) in <top (required)>'[0m
+
+Finished in 0.03352 seconds (files took 39.81 seconds to load)
+[31m4 examples, 4 failures[0m
+
+Failed examples:
+
+[31mrspec ./spec/lab_quest_6_9_spec.rb:7[0m [36m# Lab Questions Check unique_tracks without stop words removed 6. Song title starting with 'happy'[0m
+[31mrspec ./spec/lab_quest_6_9_spec.rb:11[0m [36m# Lab Questions Check unique_tracks without stop words removed 7. Song title starting with 'sad'[0m
+[31mrspec ./spec/lab_quest_6_9_spec.rb:15[0m [36m# Lab Questions Check unique_tracks without stop words removed 8. Song title starting with 'hey'[0m
+[31mrspec ./spec/lab_quest_6_9_spec.rb:19[0m [36m# Lab Questions Check unique_tracks without stop words removed 9. Song title starting with 'little'[0m
+

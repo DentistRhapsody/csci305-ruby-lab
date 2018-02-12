@@ -1,6 +1,8 @@
 Christopher McCabe
 CSCI-305
 
+Pre-emptive apology: the 6-9 trials I didn't run at the right time, so they're all using the current code and all failed because of it. Whoops.
+
 10. Some unimportant words are very common, such as "the" and "in". Other phrases get caught in a loop, such as "of the world" and "ready for you".
 
 14. As some words are more common than others, many song titles tend to devolve into a pattern based on those particular titles.

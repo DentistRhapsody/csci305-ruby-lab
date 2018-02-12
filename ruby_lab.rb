@@ -32,28 +32,27 @@ def cleanup_title(line)
 	out.gsub!(/\*.*/, "")  # Remove ***
 	out.gsub!(/(feat\.).*/, "")  # Remove feat.
 	
-	out.gsub!(/[\?¿\!¡\.;&@%#\|]/, "")
+	out.gsub!(/[\?¿\!¡\.;&@%#\|]/, "")  # Remove funky characters.
 	
-	unless out[/[^\d\s\w\']/].nil?
+	unless out[/[^\d\s\w\']/].nil?  # If it has anything other than whitespace, characters, digits, and apostrophes, get rid of it.
 		return nil
 	end
 	
-	out.downcase!
+	out.downcase!  # Lower case everything.
 	
-	out.squeeze!(" ")
+	out.squeeze!(" ")  # Remove excess spaces.
 	
 	return out
-	#p out
 end
 
 def mcw(word)
-	bigNum = 0
-	bigWord = ""
-	if not $bigrams.has_key?(word)
+	bigNum = 0  # Most instances of a following word.
+	bigWord = ""  # Word representing the above number.
+	if not $bigrams.has_key?(word)  # If the word doesn't exist, ignore it.
 		return bigWord
 	end
-	$bigrams[word].each do |k, v|
-		if v > bigNum
+	$bigrams[word].each do |k, v|  # For every word that follows the passed one...
+		if v > bigNum  # If it appears more than the current maximum, replace the max with this word.
 			unless ["a", "an", "and", "by", "for", "from", "in", "of", "on", "or", "out", "the", "to", "with"].include? k
 				bigNum = v
 				bigWord = k
@@ -64,15 +63,15 @@ def mcw(word)
 end
 
 def create_title(startingWord)
-	name = [startingWord]
+	name = [startingWord]  # Array of words that will make up the song title.
 	words = 1
 	curWord = startingWord
-	while curWord.length() > 0 && $bigrams.has_key?(curWord)
+	while curWord.length() > 0 && $bigrams.has_key?(curWord)  # If the current word exists...
 		most = mcw(curWord)
-		if name.include? most
+		if name.include? most  # If the most common word will be a repeat, return the title as-is.
 			return name.join(" ").strip
 		end
-		name << most
+		name << most  # Append the most common word onto the growing title.
 		curWord = most
 	end
 	return name.join(" ").strip
@@ -97,10 +96,10 @@ def process_file(file_name)
 				# do something for each line (if using macos or linux)
 				word = cleanup_title(line)
 				unless word.nil?
-					word = word.split(" ")
-					for i in 0..(word.length()-2)
-						if $bigrams.has_key?(word[i])
-							if $bigrams[word[i]].has_key?(word[i+1])
+					word = word.split(" ")  # Split the title based on words
+					for i in 0..(word.length()-2)  # For every word in the title (except the very last)...
+						if $bigrams.has_key?(word[i])  # If the word isn't in the dataset, add it. Otherwise...
+							if $bigrams[word[i]].has_key?(word[i+1])  # If the following word isn't attached to the current one, add it. Otherwise increment.
 								$bigrams[word[i]][word[i+1]] += 1
 							else
 								$bigrams[word[i]][word[i+1]] = 1
@@ -114,9 +113,9 @@ def process_file(file_name)
 		end
 
 		puts "Finished. Bigram model built.\n"
-	#rescue
-	#	STDERR.puts "Could not open file"
-	#	exit 4
+	rescue
+		STDERR.puts "Could not open file"
+		exit 4
 	end
 end
 
@@ -142,7 +141,7 @@ def main_loop()
 			p create_title(w)
 		end
 		print "Enter a word [Enter 'q' to quit]: "
-		w = $stdin.gets.chomp.downcase
+		w = $stdin.gets.chomp.downcase  # Minor input cleaning.
 		
 	end
 end
